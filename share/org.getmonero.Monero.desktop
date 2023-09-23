@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Nevocoin GUI
+GenericName=Nevocoin-GUI
+Comment=Nevocoin GUI
+Exec=nevocoin-wallet-gui
+Type=Application
+Terminal=false
+Categories=Network;Qt;Finance;Office;
+Icon=org.getnevocoin.Nevocoin
+StartupNotify=true
