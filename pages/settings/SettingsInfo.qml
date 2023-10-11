@@ -410,7 +410,7 @@ Rectangle {
                 small: true
                 text: qsTr("Donate to Nevocoin") + translationManager.emptyString
                 onClicked: {
-                    middlePanel.sendTo("888tNkZrPN6JsEgekjMnABU4TBzc2Dt29EPAvkRxbANsAnjyPbb3iQ1YBRk1UXcdRsiKc9dhwMVgN5S9cQUiyoogDavup3H", "", qsTr("Donation to Nevocoin Core Team") + translationManager.emptyString);
+                    middlePanel.sendTo("NS3T3EtsifxG8stRien6UHaRDAtpxS1zhMfVbEiWxG4KJqx9eJ8QnxXCUuxWUKx1Z1LbDn9YceQvfCEC4K4md48T1ZBVVXJpE", "", qsTr("Donation to Nevocoin Team") + translationManager.emptyString);
                 }
             }
         }
