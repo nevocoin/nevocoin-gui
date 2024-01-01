@@ -144,7 +144,7 @@ function getApproximateBlockchainHeight(_date, _nettype){
   // avg seconds per block
   const seconds_per_block = 120;
   // Calculated blockchain height
-  const approx_blockchain_height = fork_block + (Math.floor((new Date(_date)).getTime()/1000) - fork_time)/seconds_per_block;
+  let approx_blockchain_height = fork_block + (Math.floor((new Date(_date)).getTime()/1000) - fork_time)/seconds_per_block;
   // reduce blocks rollback to avoid
   // "wallet's refresh-from-block-height setting is higher than daemon" bug
   const approximate_rolled_back_blocks = 1000;
@@ -153,6 +153,6 @@ function getApproximateBlockchainHeight(_date, _nettype){
   } else {
     approx_blockchain_height = 0;
   }
-  console.log("Calculated blockchain height: " << approx_blockchain_height);
+  console.log("Calculated blockchain height: " + approx_blockchain_height);
   return approx_blockchain_height;
 }
