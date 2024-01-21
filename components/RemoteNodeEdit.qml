@@ -37,7 +37,7 @@ import "../components" as NevocoinComponents
 
 GridLayout {
     columns: 2
-    columnSpacing: 32
+    columnSpacing: 20
     id: root
     property alias daemonAddrText: daemonAddr.text
     property alias daemonPortText: daemonPort.text

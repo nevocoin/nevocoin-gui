@@ -103,9 +103,9 @@ NevocoinComponents.Dialog {
         Keys.onEscapePressed: root.onCancel()
     }
 
-    RowLayout {
+    ColumnLayout {
         Layout.fillWidth: true
-        spacing: 32
+        spacing: 20
 
         NevocoinComponents.LineEdit {
             id: daemonUsername
@@ -147,6 +147,7 @@ NevocoinComponents.Dialog {
         spacing: parent.spacing
 
         NevocoinComponents.StandardButton {
+            Layout.minimumWidth: 64
             activeFocusOnTab: true
             fontBold: false
             primary: false
@@ -156,6 +157,7 @@ NevocoinComponents.Dialog {
         }
 
         NevocoinComponents.StandardButton {
+            Layout.minimumWidth: 64
             activeFocusOnTab: true
             fontBold: false
             enabled: remoteNodeAddress.getAddress() != ""

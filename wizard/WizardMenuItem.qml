@@ -98,6 +98,7 @@ RowLayout {
             Layout.fillWidth: true
             leftPadding: parent.leftPadding
             topPadding: 0
+            wrapMode: Text.WordWrap
             color: NevocoinComponents.Style.defaultFontColor
             opacity: NevocoinComponents.Style.blackTheme ? 1.0 : 0.8
             font.bold: true

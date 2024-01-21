@@ -60,7 +60,7 @@ ApplicationWindow {
         (persistentSettings.displayWalletNameInTitleBar && walletName
         ? " - " + walletName
         : "")
-    minimumWidth: 750
+    minimumWidth: isAndroid ? 375 : 750
     minimumHeight: 450
 
     property var currentItem
@@ -1399,7 +1399,7 @@ ApplicationWindow {
         property bool   is_trusted_daemon : false  // TODO: drop after v0.17.2.0 release
         property bool   is_recovering : false
         property bool   is_recovering_from_device : false
-        property bool   customDecorations : true
+        property bool   customDecorations : isAndroid ? false : true
         property string daemonFlags
         property string p2poolFlags
         property int logLevel: 0
@@ -1641,6 +1641,7 @@ ApplicationWindow {
 
     NevocoinComponents.RemoteNodeDialog {
         id: remoteNodeDialog
+        y: isAndroid ? 10 : (parent.height - height) / 2
     }
 
     // Choose blockchain folder
@@ -1793,7 +1794,7 @@ ApplicationWindow {
 
             LeftPanel {
                 id: leftPanel
-                anchors.top: parent.top
+                anchors.top: isAndroid ? upperPanel.bottom : parent.top
                 anchors.left: parent.left
                 anchors.bottom: parent.bottom
                 visible: rootItem.state == "normal" && middlePanel.state != "Merchant"
@@ -1851,11 +1852,46 @@ ApplicationWindow {
             MiddlePanel {
                 id: middlePanel
                 accountView.currentAccountIndex: currentWallet ? currentWallet.currentSubaddressAccount : 0
-                anchors.top: parent.top
+                anchors.top: isAndroid ? upperPanel.bottom : parent.top
                 anchors.bottom: parent.bottom
                 anchors.left: leftPanel.visible ? leftPanel.right : parent.left
                 anchors.right: parent.right
                 state: "Transfer"
+            }
+
+            UpperPanel {
+                id: upperPanel
+                visible: isAndroid && rootItem.state == "normal" && middlePanel.state !== "Merchant"
+                z: leftPanel.z
+                height: 50
+                anchors.top: parent.top
+                anchors.bottom: leftPanel.top
+                anchors.left: parent.left
+                anchors.right: parent.right
+
+                onTransferClicked: {
+                    middlePanel.state = "Transfer";
+                    middlePanel.flickable.contentY = 0;
+                    updateBalance();
+                }
+
+                onReceiveClicked: {
+                    middlePanel.state = "Receive";
+                    middlePanel.flickable.contentY = 0;
+                    updateBalance();
+                }
+
+                onHistoryClicked: {
+                    middlePanel.state = "History";
+                    middlePanel.flickable.contentY = 0;
+                    updateBalance();
+                }
+
+                onSettingsClicked: {
+                    middlePanel.state = "Settings";
+                    middlePanel.flickable.contentY = 0;
+                    updateBalance();
+                }
             }
 
             WizardController {

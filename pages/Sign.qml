@@ -339,7 +339,7 @@ Rectangle {
                 labelText: qsTr("Address") + translationManager.emptyString
                 addressValidation: true
                 placeholderFontSize: 16
-                placeholderText: qsTr("Enter the Nevocoin Address (example: 44AFFq5kSiGBoZ...)") + translationManager.emptyString
+                placeholderText: qsTr("Enter the Nevocoin Address (eg: NeAFFq5k...)") + translationManager.emptyString
                 wrapMode: Text.WrapAnywhere
                 text: ''
             }

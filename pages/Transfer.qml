@@ -251,10 +251,10 @@ Rectangle {
                 anchors.right: parent.right
                 spacing: 0
 
-                readonly property int colSpacing: 10
+                readonly property int colSpacing: isAndroid ? 4 : 10
                 readonly property int rowSpacing: 10
                 readonly property int secondRowWidth: 125
-                readonly property int thirdRowWidth: 50
+                readonly property int thirdRowWidth: isAndroid ? 32 : 50
 
                 RowLayout {
                     Layout.bottomMargin: recipientLayout.rowSpacing / 2
@@ -395,7 +395,10 @@ Rectangle {
                                 wrapMode: Text.WrapAnywhere
                                 placeholderText: {
                                     if(persistentSettings.nettype == NetworkType.MAINNET){
-                                        return "4.. / 8.. / nevocoin:.. / OpenAlias";
+                                        if (isAndroid) {
+                                          return "Ne.. / NS..";
+                                        }
+                                        return "Ne.. / Ns.. / nevocoin:.. / OpenAlias";
                                     } else if (persistentSettings.nettype == NetworkType.STAGENET){
                                         return "5.. / 7.. / nevocoin:..";
                                     } else if(persistentSettings.nettype == NetworkType.TESTNET){
